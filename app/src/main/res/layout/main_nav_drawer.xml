@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/items">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/profile_line"
+        android:layout_marginTop="27dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/rubik_semibold"
+            android:gravity="center"
+            android:paddingStart="65dp"
+            android:text="Личный кабинет"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Войти"
+        android:fontFamily="@font/rubik_regular"
+        android:textSize="17sp"
+        android:textColor="@color/white"
+        android:textAlignment="textStart"
+        android:paddingStart="65dp"
+        android:paddingTop="50dp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Номер телефона"
+        android:fontFamily="@font/rubik_light"
+        android:textSize="12sp"
+        android:textColor="@color/phone_nav"
+        android:paddingStart="65dp"/>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:onClick="ClickHome">
+
+        <Button
+
+            android:layout_width="212dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="65dp"
+            android:background="#00FFFFFF"
+            android:drawableEnd="@drawable/rightarrowprofile"
+            android:drawablePadding="70dp"
+            android:fontFamily="@font/rubik_light"
+            android:paddingTop="40dp"
+            android:text="Билеты"
+            android:textAlignment="textStart"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="22sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <Button
+            android:layout_width="212dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="65dp"
+            android:background="#00FFFFFF"
+            android:paddingTop="15dp"
+            android:drawableEnd="@drawable/rightarrowprofile"
+            android:drawablePadding="30dp"
+            android:fontFamily="@font/rubik_light"
+            android:text="Брони"
+            android:textAlignment="textStart"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="22sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <Button
+            android:layout_width="212dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="65dp"
+            android:background="#00FFFFFF"
+            android:paddingTop="15dp"
+            android:drawableEnd="@drawable/rightarrowprofile"
+            android:drawablePadding="30dp"
+            android:fontFamily="@font/rubik_light"
+            android:text="Редактировать"
+            android:textAlignment="textStart"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="22sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="bottom|center">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/logout"
+            android:fontFamily="@font/rubik_light"
+            android:text="Выйти"
+            android:layout_marginBottom="15dp"
+            android:gravity="bottom|center"
+            android:textAllCaps="false"
+            android:paddingBottom="10dp"
+            android:textColor="@color/white"
+            android:onClick="ClickLogout"
+            android:textSize="22sp" />
+
+    </LinearLayout>
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:gravity="center_vertical"-->
+<!--        android:onClick="ClickDashboard">-->
+
+<!--        <TextView-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:text="Dashboard"-->
+<!--            android:padding="12dp"-->
+<!--            android:layout_marginStart="16dp"/>-->
+
+<!--        <ImageView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginEnd="48dp"-->
+<!--            android:src="@drawable/ic_dashboard"/>-->
+<!--    </LinearLayout>-->
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:gravity="center_vertical"-->
+<!--        android:onClick="ClickAboutUs">-->
+<!--        <TextView-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:text="About Us"-->
+<!--            android:padding="12dp"-->
+<!--            android:layout_marginStart="16dp"/>-->
+
+<!--        <ImageView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginEnd="48dp"-->
+<!--            android:src="@drawable/ic_info"/>-->
+<!--    </LinearLayout>-->
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:gravity="center_vertical"-->
+<!--        android:onClick="ClickLogout">-->
+<!--        <TextView-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1"-->
+<!--            android:text="Log out"-->
+<!--            android:padding="12dp"-->
+<!--            android:layout_marginStart="16dp"/>-->
+
+<!--        <ImageView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginEnd="48dp"-->
+<!--            android:src="@drawable/ic_power"/>-->
+<!--    </LinearLayout>-->
+
+</LinearLayout>

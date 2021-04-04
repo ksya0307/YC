@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="10dp"
+    android:gravity="center"
+    android:background="@drawable/shape_for_all_movies">
+    <androidx.cardview.widget.CardView
+        card_view:cardUseCompatPadding="false"
+        card_view:cardCornerRadius="21dp"
+        app:cardElevation="0dp"
+        card_view:cardBackgroundColor="@color/items"
+        android:layout_width="match_parent"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            >
+
+                <ImageView
+                    android:id="@+id/movie_image"
+                    android:layout_width="94dp"
+                    android:layout_height="141dp"
+                    android:layout_marginTop="9dp"
+                    android:layout_weight="2"
+
+                    android:layout_marginStart="10dp"
+                    android:layout_marginBottom="9dp"
+                    android:background="@drawable/roundimg"
+                    android:src="@drawable/testpic"
+
+                    />
+
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="4"
+                android:background="#00FFFFFF"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/movie_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/rubik_semibold"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    tools:ignore="NestedWeights"
+                    tools:text="Что если такое название" />
+
+                <TextView
+                    android:id="@+id/movie_genre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/rubik_light"
+
+                    android:textColor="@color/phone_nav"
+                    android:textSize="15sp"
+                    tools:text="Тут будут жанры, может быть много жанров о круто" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/movie_year"
+                        android:layout_width="0dp"
+                        android:layout_height="36dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_weight="1.5"
+
+                        android:background="@drawable/for_year_btn"
+                        android:fontFamily="@font/rubik_regular"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        tools:text="2021" />
+
+                    <Button
+                        android:id="@+id/movie_time"
+                        android:layout_width="0dp"
+                        android:layout_height="36dp"
+                        android:layout_marginStart="5dp"
+
+                        android:layout_marginEnd="5dp"
+                        android:layout_weight="2"
+                        android:background="@drawable/for_year_btn"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        tools:text="106 мин." />
+
+                    <Button
+                        android:id="@+id/movie_age"
+                        android:layout_width="0dp"
+                        android:layout_height="36dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/for_year_btn"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        tools:text="12+" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+<!--            <ImageView-->
+<!--                android:id="@+id/movie_image"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:contentDescription="@string/movie"-->
+<!--                android:src="@drawable/ourfriend"-->
+<!--                />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/movie_name"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="10dp"-->
+<!--                android:layout_marginTop="5dp"-->
+<!--                android:fontFamily="@font/rubik_semibold"-->
+<!--                tools:text="Название фильма"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:textSize="20sp"-->
+<!--                android:layout_toEndOf="@id/movie_image"/>-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/movie_genre"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@+id/movie_name"-->
+<!--            android:layout_marginStart="10dp"-->
+<!--            android:layout_marginBottom="5dp"-->
+<!--            android:layout_toEndOf="@id/movie_image"-->
+<!--            android:fontFamily="@font/rubik_light"-->
+<!--            tools:text="Тут будут жанры"-->
+<!--            android:textColor="@color/phone_nav"-->
+<!--            android:textSize="15sp" />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/movie_year"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="36dp"-->
+<!--            android:layout_marginStart="10dp"-->
+<!--            android:layout_toEndOf="@id/movie_image"-->
+<!--            android:layout_below="@id/movie_genre"-->
+<!--            android:background="@drawable/for_year_btn"-->
+<!--            android:fontFamily="@font/rubik_regular"-->
+<!--            tools:text="год"-->
+<!--            android:textAllCaps="false"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="15sp" />-->
+
+<!--            <Button-->
+<!--                android:id="@+id/movie_time"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="36dp"-->
+<!--                android:layout_marginStart="10dp"-->
+<!--                android:background="@drawable/for_year_btn"-->
+<!--                android:drawableStart="@drawable/clock"-->
+<!--                android:drawablePadding="6dp"-->
+<!--                android:fontFamily="@font/rubik_regular"-->
+<!--                android:paddingStart="10dp"-->
+<!--                android:paddingEnd="10dp"-->
+<!--                tools:text="время"-->
+
+<!--                android:layout_toEndOf="@id/movie_year"-->
+
+<!--                android:layout_below="@id/movie_genre"-->
+
+<!--                android:textAlignment="textStart"-->
+<!--                android:textAllCaps="false"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:textSize="15sp" />-->
+
+<!--            <Button-->
+<!--                android:id="@+id/movie_age"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="36dp"-->
+<!--                android:layout_marginStart="10dp"-->
+<!--                android:background="@drawable/for_year_btn"-->
+<!--                android:fontFamily="@font/rubik_regular"-->
+<!--                tools:text="возраст"-->
+<!--                android:textAllCaps="false"-->
+<!--                android:layout_below="@id/movie_genre"-->
+<!--                android:layout_toEndOf="@id/movie_time"-->
+<!--                android:textColor="@color/white"-->
+<!--                android:textSize="15sp" />-->
+
+<!--        <ImageButton-->
+<!--            android:id="@+id/btn"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:layout_marginStart="50dp"-->
+<!--            android:layout_toEndOf="@id/movie_age"-->
+<!--            android:contentDescription="open click"-->
+<!--            android:background="#00FFFFFF"-->
+
+<!--            android:src="@drawable/right_arrow_main" />-->
+
+    </LinearLayout>

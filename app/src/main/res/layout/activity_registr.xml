@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none"
+    android:overScrollMode="never">
+<!--    android:background="@drawable/whitebg"-->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        tools:context=".registr">
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="8dp"
+
+            android:contentDescription="@string/logo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/logo" />
+
+        <EditText
+            android:id="@+id/login_input"
+            android:layout_width="wrap_content"
+            android:focusableInTouchMode="true"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:paddingBottom="4dp"
+            android:focusable="true"
+            android:textColor="@color/redYC"
+            android:background="@drawable/login_input"
+            android:ems="10"
+            android:maxLength="30"
+            android:fontFamily="@font/rubik_medium"
+            android:inputType="textPersonName"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:paddingTop="10dp"
+            app:layout_constraintEnd_toEndOf="@+id/pwd_input"
+            app:layout_constraintStart_toStartOf="@+id/pwd_input"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            android:importantForAutofill="no" />
+
+        <EditText
+            android:id="@+id/pwd_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:focusableInTouchMode="true"
+            android:background="@drawable/pwd_inp"
+            android:ems="10"
+            android:paddingBottom="4dp"
+            android:fontFamily="@font/rubik_medium"
+            android:inputType="textPassword"
+            android:textColor="@color/redYC"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:paddingTop="10dp"
+            android:maxLength="30"
+            app:layout_constraintEnd_toEndOf="@+id/conf_pwd"
+            app:layout_constraintStart_toStartOf="@+id/conf_pwd"
+            app:layout_constraintTop_toBottomOf="@+id/login_input"
+            android:importantForAutofill="no" />
+
+        <EditText
+            android:id="@+id/conf_pwd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/conf_pwd"
+            android:fontFamily="@font/rubik_medium"
+            android:maxLength="30"
+
+            android:paddingBottom="4dp"
+            android:inputType="textPassword"
+            android:textColor="@color/redYC"
+            android:textAlignment="center"
+            android:paddingTop="10dp"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/fam_input"
+            app:layout_constraintStart_toStartOf="@+id/fam_input"
+            app:layout_constraintTop_toBottomOf="@+id/pwd_input"
+            android:importantForAutofill="no" />
+
+        <EditText
+            android:id="@+id/fam_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/fam_inp"
+            android:ems="10"
+            android:fontFamily="@font/rubik_medium"
+            android:maxLength="30"
+            android:paddingBottom="4dp"
+
+            android:inputType="textPersonName"
+            android:textAlignment="center"
+            android:textColor="@color/redYC"
+
+            android:paddingTop="10dp"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/name_input"
+            app:layout_constraintStart_toStartOf="@+id/name_input"
+            app:layout_constraintTop_toBottomOf="@+id/conf_pwd"
+            android:importantForAutofill="no" />
+
+        <EditText
+            android:id="@+id/name_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/name_inp"
+            android:ems="10"
+            android:fontFamily="@font/rubik_medium"
+            android:textColor="@color/redYC"
+            android:maxLength="30"
+            android:paddingTop="10dp"
+
+            android:paddingBottom="4dp"
+            android:inputType="textPersonName"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/phone_inp"
+            app:layout_constraintStart_toStartOf="@+id/phone_inp"
+            app:layout_constraintTop_toBottomOf="@+id/fam_input"
+            android:importantForAutofill="no" />
+
+        <EditText
+            android:id="@+id/email_inp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/email_inp"
+            android:ems="10"
+            android:maxLength="30"
+            android:fontFamily="@font/rubik_medium"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/redYC"
+            android:paddingTop="10dp"
+
+            android:textAlignment="center"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/birth_inp"
+            app:layout_constraintHorizontal_bias="0.457"
+            app:layout_constraintStart_toStartOf="@+id/birth_inp"
+            app:layout_constraintTop_toBottomOf="@+id/phone_inp"
+            android:importantForAutofill="no" />
+
+        <br.com.sapereaude.maskedEditText.MaskedEditText
+            android:id="@+id/birth_inp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/birth_inp"
+            android:ems="10"
+            android:fontFamily="@font/rubik_medium"
+            android:maxLength="30"
+            android:inputType="date"
+            android:textColor="@color/redYC"
+            android:textAlignment="center"
+            android:textSize="16sp"
+            android:paddingTop="10dp"
+            app:mask="##.##.####"
+            android:hint="01011997"
+            app:keep_hint="true"
+            app:layout_constraintEnd_toEndOf="@+id/registr_btn"
+            app:layout_constraintStart_toStartOf="@+id/registr_btn"
+            app:layout_constraintTop_toBottomOf="@+id/email_inp"
+            android:importantForAutofill="no" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/bahnschrift_bold"
+            android:text="@string/registration"
+            android:textColor="@color/fiolet"
+            android:textSize="28sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logo" />
+
+        <Button
+            android:id="@+id/registr_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/regist"
+            android:fontFamily="@font/rubik_medium"
+            android:paddingBottom="5dp"
+            android:text="@string/registr"
+            android:textColor="#FFFFFF"
+            android:textSize="19sp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/birth_inp" />
+
+        <br.com.sapereaude.maskedEditText.MaskedEditText
+            android:id="@+id/phone_inp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/phone_inp"
+            android:ems="10"
+            android:maxLength="30"
+            android:textColor="@color/redYC"
+            android:textSize="16sp"
+            android:fontFamily="@font/rubik_medium"
+            android:paddingTop="10dp"
+            android:textAlignment="center"
+            android:inputType="phone"
+            app:mask="+7 ### ### ## ##"
+            app:layout_constraintEnd_toEndOf="@+id/email_inp"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="@+id/email_inp"
+            app:layout_constraintTop_toBottomOf="@+id/name_input"
+            android:importantForAutofill="no" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
