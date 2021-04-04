@@ -286,6 +286,6 @@ public class MainActivity extends AppCompatActivity {
         }
         mAdapter.choosedGenreList(choosedGenre);
     }
-    
+    //загитено
 
 }
