@@ -64,7 +64,7 @@ public class getUser extends DialogFragment {
         Statement st = null;
         connection con = new connection();
         Connection connect = connection.conn();
-        String sql = "select id from users where login='" + login + "' and password='"+ sha253pwd.encrypt(password)+"'";
+        String sql = "select id from users where login='" + login + "' and password='"+ sha253pwd.sha256(password)+"'";
 
         Boolean existingUser =  false;
         try {

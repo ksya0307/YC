@@ -26,14 +26,14 @@
         <activity android:name=".Dashboard" />
         <activity android:name=".NavDrawer"></activity>
         <activity android:name=".auth" >
+
+        </activity>
+        <activity android:name=".registr" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".registr" >
-
         </activity>
         <activity android:name=".MainActivity">
 
