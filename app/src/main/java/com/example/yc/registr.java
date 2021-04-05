@@ -90,18 +90,11 @@ public class registr extends AppCompatActivity {
                 {
                     String encrpassword = null;
                     try {
-                        encrpassword = AES.encrypt(password.getText().toString());
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    String decrpassword = null;
-                    try {
-                        decrpassword = AES.decrypt(encrpassword);
+                        encrpassword = sha253pwd.sha256(password.getText().toString());
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
 
-                    System.out.println(password.getText().toString()+"\n"+encrpassword+"\n"+decrpassword);
                     newUser.newUser(
                             last_name.getText().toString(),
                             name.getText().toString(),

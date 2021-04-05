@@ -1,14 +1,10 @@
 package com.example.yc.cinema;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
-import android.content.DialogInterface;
-import android.os.Bundle;
 import android.util.Log;
 
 import androidx.fragment.app.DialogFragment;
 
-import com.example.yc.AES;
+import com.example.yc.sha253pwd;
 import com.example.yc.connection;
 
 import java.sql.Connection;
@@ -68,7 +64,7 @@ public class getUser extends DialogFragment {
         Statement st = null;
         connection con = new connection();
         Connection connect = connection.conn();
-        String sql = "select id from users where login='" + login + "' and password='"+ AES.encrypt(password)+"'";
+        String sql = "select id from users where login='" + login + "' and password='"+ sha253pwd.encrypt(password)+"'";
 
         Boolean existingUser =  false;
         try {
