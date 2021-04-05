@@ -93,13 +93,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        // @SuppressLint("UseCompatLoadingForDrawables") Drawable image_movie = this.getResources().getDrawable(R.drawable.ourfriend);
-        //@SuppressLint("UseCompatLoadingForDrawables") Drawable arrow = this.getResources().getDrawable(R.drawable.right_arrow_main);
-
-//        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-//        //params.gravity = Gravity.BOTTOM&Gravity.CENTER_HORIZONTAL;
-//        params.setMargins(20,0,0,0);
-//        params.setMarginEnd(20);
         //жанры
         Map<Integer, String> genres;
         com.example.yc.cinema.genres genre = new genres();
@@ -113,12 +106,9 @@ public class MainActivity extends AppCompatActivity {
         int getsize = pics.size();
         System.out.println("колво"+getsize);
 
-        //int count_genres = genre.getGenres().size();
 
         //шрифт
         Typeface genre_font = ResourcesCompat.getFont(this, R.font.rubik_light);
-
-        //ContextThemeWrapper style_btn = new ContextThemeWrapper(this,R.style.for_genres);
 
 
         linearLayoutGenres = (LinearLayout) findViewById(R.id.genres_db);
@@ -146,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
             genre_item.setId(entry.getKey());
             genre_item.setText(entry.getValue().trim());
             genre_item.setTypeface(genre_font);
-//                System.out.println(pics.get(size) + " " + entry.getKey());
+
             System.out.println(genre_item.getId());
             size++;
             genre_item.setOnClickListener(handleOnClick(genre_item));
@@ -181,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
             movie_item.setCompoundDrawablesRelativeWithIntrinsicBounds(0, R.drawable.soul, 0, 0);
 
             movie_item.setText(entry.getValue().trim());
-            //+System.getProperty("line.separator")
+
             linearLayoutPopularMovies.addView(movie_item, params_pop_movies);
         }
 
@@ -195,11 +185,6 @@ public class MainActivity extends AppCompatActivity {
         params_for_all_movies.topMargin = 10;
         params_for_all_movies.gravity = Gravity.CENTER;
 
-//        layoutManager = new LinearLayoutManager(this);
-//        recyclerView.setLayoutManager(layoutManager);
-//        RecyclerViewAdapter adapter = new RecyclerViewAdapter(movieList,MainActivity.this);
-
-//
         movieList = new ArrayList<>();
 
          for (Map.Entry<Integer, String> entry : AllMovies.entrySet()) {
@@ -255,18 +240,6 @@ public class MainActivity extends AppCompatActivity {
         };
     }
 
-    private View.OnClickListener clickedListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            clickedGenre();
-        }
-    };
-    private void clickedGenre(){
-//
-//        search_result(genre_item.getText().toString());
-//        System.out.println(genre_item.getId());
-
-    }
     private void filter(String movie){
         ArrayList<Movie> filteredMoviesList = new ArrayList<>();
         for(Movie item: movieList){
@@ -286,6 +259,5 @@ public class MainActivity extends AppCompatActivity {
         }
         mAdapter.choosedGenreList(choosedGenre);
     }
-
 
 }
