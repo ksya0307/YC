@@ -1,7 +1,9 @@
 package com.example.yc;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
@@ -21,6 +23,7 @@ public class auth extends AppCompatActivity {
     public EditText login,password;
     public CheckBox showpwd;
     public Button auth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +69,17 @@ public class auth extends AppCompatActivity {
             }
         });
 
+    }
 
+
+    public void logUp(View view) {
+        redirectActivity(this,registr.class);
+    }
+
+    public static void redirectActivity(Activity activity, Class aClass) {
+        Intent intent = new Intent(activity,aClass);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        activity.startActivity(intent);
     }
 }

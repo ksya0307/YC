@@ -133,11 +133,73 @@
 
         </LinearLayout>
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"/>
+            android:orientation="horizontal">
+            <include
+                layout="@layout/seats" />
 
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/screen"
+                android:layout_margin="50dp"/>
+        </LinearLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+   android:layout_gravity="center_horizontal"
+    android:layout_weight="1"
+    android:orientation="horizontal">
+    <Button
+        android:id="@+id/num_tickets"
+        android:layout_width="wrap_content"
+        android:text="билета"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:fontFamily="@font/rubik_medium"
+        android:textAllCaps="false"
+        android:background="@drawable/for_year_btn"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:layout_weight="1"
+        tools:ignore="NestedWeights" />
+    <Button
+        android:id="@+id/buytickets"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Купить"
+
+        android:fontFamily="@font/rubik_medium"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:background="@drawable/for_year_btn"
+        android:layout_marginStart="10dp"
+
+        android:layout_weight="1"/>
+    <Button
+        android:id="@+id/bookTickets"
+        android:layout_width="wrap_content"
+        android:fontFamily="@font/rubik_medium"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:text="Забронировать"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/for_year_btn"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"/>
+
+</LinearLayout>
+    </LinearLayout>
 
 </ScrollView>
 </androidx.drawerlayout.widget.DrawerLayout>

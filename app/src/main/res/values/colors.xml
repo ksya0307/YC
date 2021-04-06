@@ -13,4 +13,7 @@
     <color name="search">#B1B1B1</color>
     <color name="fiolet">#333366</color>
     <color name="phone_nav">#707070</color>
+    <color name="green_chair">#7BFE77</color>
+    <color name="yellow_chair">#FED477</color>
+    <color name="red_chair">#E2424A</color>
 </resources>
