@@ -22,6 +22,7 @@
 
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/s11"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_rowWeight="1"
@@ -44,6 +45,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/s12"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_rowWeight="1"
@@ -68,6 +70,7 @@
                     android:textColor="@color/white"/>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
+            android:id="@+id/s13"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
@@ -92,6 +95,7 @@
                     android:textColor="@color/white"/>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
+            android:id="@+id/s14"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
@@ -116,6 +120,7 @@
                     android:textColor="@color/white"/>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
+            android:id="@+id/s15"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
@@ -140,6 +145,7 @@
                     android:textColor="@color/white"/>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
+            android:id="@+id/s16"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:cardBackgroundColor="@color/green_chair"
@@ -166,6 +172,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/s17"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
@@ -191,6 +198,7 @@
                     android:textColor="@color/white"/>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
+            android:id="@+id/s18"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:cardBackgroundColor="@color/green_chair"
@@ -215,6 +223,7 @@
                     android:textColor="@color/white"/>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
+            android:id="@+id/s19"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
@@ -239,6 +248,7 @@
                     android:textColor="@color/white"/>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
+            android:id="@+id/s20"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
@@ -263,6 +273,7 @@
                     android:textColor="@color/white"/>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
+            android:id="@+id/s1"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_rowWeight="1"
@@ -276,17 +287,18 @@
 <!--&lt;!&ndash;                android:layout_height="wrap_content"&ndash;&gt;-->
 <!--&lt;!&ndash;                android:layout_gravity="center_horizontal"&ndash;&gt;-->
 <!--&lt;!&ndash;                android:src="@drawable/greenchair" />&ndash;&gt;-->
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="А1"
-                    android:textSize="15sp"
-                    android:textAlignment="center"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/rubik_medium"
-                    android:textColor="@color/white"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/rubik_medium"
+                android:text="А1"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
+            android:id="@+id/s2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
@@ -311,6 +323,7 @@
                     android:textColor="@color/white"/>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
+            android:id="@+id/s3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
@@ -335,6 +348,7 @@
                     android:textColor="@color/white"/>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
+            android:id="@+id/s4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
@@ -359,6 +373,7 @@
                     android:textColor="@color/white"/>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
+            android:id="@+id/s5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
@@ -383,6 +398,7 @@
                     android:textColor="@color/white"/>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
+            android:id="@+id/s6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
@@ -407,6 +423,7 @@
                     android:textColor="@color/white"/>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
+            android:id="@+id/s7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
@@ -431,6 +448,7 @@
                     android:textColor="@color/white"/>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
+            android:id="@+id/s8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
@@ -455,6 +473,7 @@
                     android:textColor="@color/white"/>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
+            android:id="@+id/s9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
@@ -479,6 +498,7 @@
                     android:textColor="@color/white"/>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
+            android:id="@+id/s10"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"

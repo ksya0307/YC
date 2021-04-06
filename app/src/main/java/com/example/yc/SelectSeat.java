@@ -12,6 +12,8 @@ import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.yc.cinema.addticket;
+
 import static android.graphics.Color.parseColor;
 
 public class SelectSeat extends AppCompatActivity {
@@ -41,6 +43,23 @@ public class SelectSeat extends AppCompatActivity {
         book = (Button) findViewById(R.id.bookTickets);
 
         totaltickets = (Button) findViewById(R.id.num_tickets);
+        com.example.yc.cinema.addticket addticket = new addticket();
+
+        buy.setOnClickListener(v -> {
+            boolean bSelected = false;
+            int iSeatNum=0;
+            for(int i=0;i<mainGrid.getChildCount();i++){
+                final CardView seat = (CardView) mainGrid.getChildAt(i);
+                if(seat.getCardBackgroundColor().getDefaultColor() == Color.parseColor("#E2424A")){
+                    iSeatNum = seat.getId();
+                    String idNum = getResources().getResourceName(iSeatNum);
+                    int idseat= Integer.parseInt(idNum.replaceAll("id/s",""));
+                    System.out.println(idseat+"");
+                    //addticket.addticket(5,idseat,6);//
+                    //
+                }
+            }
+        });
 
         setToggleEvent(mainGrid);
     }
