@@ -271,6 +271,8 @@ public class MainActivity extends AppCompatActivity {
         mAdapter.choosedGenreList(choosedGenre);
     }
 
+
+
     public void ClickMenu(View view){
         openDrawer(drawerLayout);
     }
@@ -282,6 +284,7 @@ public class MainActivity extends AppCompatActivity {
     public void LogIn(View view){
         redirectActivity(this,auth.class);
     }
+
     public static void redirectActivity(Activity activity, Class aClass) {
         Intent intent = new Intent(activity,aClass);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -319,5 +322,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         builder.show();
+    }
+
+    public void toMain(View view){
+       recreate();
     }
 }

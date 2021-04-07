@@ -51,29 +51,10 @@ public class registr extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-//                String pattern = "dd.MM.yyyy";
-//                DateTimeFormatter df = DateTimeFormatter.ofPattern(pattern);
-//                String strDate = String.format(birth.getText().toString(), df);
-//                String[] arrDate = strDate.split(".");
-//
-//                int year = Integer.parseInt(arrDate[2]);
-//                int month = Integer.parseInt(arrDate[1]);
-//                int day = Integer.parseInt(arrDate[0]);
-//
-//                System.out.println(day+month+year);
-//
-//
-//                System.out.println(exist);
-//                if(month ==2 && day>28){
-//                    Toast.makeText(getApplicationContext(),"Ошибка ввода даты рождения", Toast.LENGTH_LONG).show();
-//                }else if(month>12 || day>31 || year<1900){
-//                    Toast.makeText(getApplicationContext(),"Ошибка ввода даты рождения", Toast.LENGTH_LONG).show();
-//
-//                }else
+
                 com.example.yc.cinema.getUser existingUser = new getUser();
                 Boolean exist = existingUser.getUser(login.getText().toString());
                 if(exist){
-                   //MSG BOX на существующего пользователя
                     openExistingDialog();
                 }
                 else if(login.getText().toString().equals("")
@@ -112,7 +93,7 @@ public class registr extends AppCompatActivity {
     }
 
     public  void  openExistingDialog(){
-    ErrorDialog existUser = new ErrorDialog();
+    ErrorExist existUser = new ErrorExist();
         existUser.show(getSupportFragmentManager(),"Существующий пользователь");
     }
 

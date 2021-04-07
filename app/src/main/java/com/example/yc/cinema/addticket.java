@@ -5,6 +5,7 @@ import android.util.Log;
 import com.example.yc.connection;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -13,7 +14,7 @@ import java.util.TreeMap;
 
 public class addticket {
     public void addticket(int idshow,int idseat,int iduser){
-        Statement st = null;
+        PreparedStatement st = null;
         connection con = new connection();
         Connection connect = connection.conn();
         String sql = "INSERT INTO tickets (show,seat,customer) values(" + idshow + "," + idseat + "," + iduser + ");";
@@ -24,8 +25,8 @@ public class addticket {
         try {
             if(connect!=null) {
                 Log.e("OK","Коннект");
-                st = connect.createStatement();
-                st.executeQuery(sql);
+                st = connect.prepareStatement(sql);
+                st.executeUpdate();
             }
             else Log.e("ERROR","Ошибочка");
 
@@ -44,4 +45,5 @@ public class addticket {
             }
         }
     }
+
 }

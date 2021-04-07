@@ -128,7 +128,7 @@
                 android:textAlignment="textStart"
                 android:background="#00FFFFFF"
                 android:textColor="@color/white"
-                android:drawableStart="@drawable/redchair"
+                android:drawableStart="@drawable/bought"
                 android:text="Куплено" />
 
         </LinearLayout>

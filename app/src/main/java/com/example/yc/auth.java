@@ -1,6 +1,7 @@
 package com.example.yc;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.app.Activity;
@@ -24,6 +25,8 @@ public class auth extends AppCompatActivity {
     public CheckBox showpwd;
     public Button auth;
 
+    DrawerLayout drawerLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,19 +38,14 @@ public class auth extends AppCompatActivity {
         showpwd = findViewById(R.id.show_pwd);
 
 
-        showpwd.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked){
-                    password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                }
-                else{
-                    password.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                }
+        showpwd.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if(isChecked){
+                password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+            }
+            else{
+                password.setTransformationMethod(PasswordTransformationMethod.getInstance());
             }
         });
-
-
         auth.setOnClickListener(v -> {
             getUser authUser = new getUser();
             boolean success;
@@ -68,9 +66,7 @@ public class auth extends AppCompatActivity {
                 e.printStackTrace();
             }
         });
-
     }
-
 
     public void logUp(View view) {
         redirectActivity(this,registr.class);
@@ -81,5 +77,19 @@ public class auth extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
         activity.startActivity(intent);
+    }
+    public void ClickMenu(View view){
+        openDrawer(drawerLayout);
+    }
+
+    public static void openDrawer(DrawerLayout drawerLayout) {
+        drawerLayout.openDrawer(GravityCompat.START);
+    }
+
+    public void LogIn(View view){
+        recreate();
+    }
+    public void toMain(View view){
+        redirectActivity(this, MainActivity.class);
     }
 }
