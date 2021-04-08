@@ -13,7 +13,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class addticket {
-    public void addticket(int idshow,int idseat,int iduser){
+    public static void addticket(int idshow, int idseat, int iduser){
         PreparedStatement st = null;
         connection con = new connection();
         Connection connect = connection.conn();

@@ -18,21 +18,18 @@
         android:icon="@mipmap/icon_yc"
         android:label="@string/app_name"
         android:requestLegacyExternalStorage="true"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.YC">
+        <activity android:name=".MovieInfo"></activity>
+        <activity android:name=".UserProfile" />
         <activity android:name=".SelectSeat">
 
         </activity>
         <activity android:name=".AboutUs" />
         <activity android:name=".Dashboard" />
-        <activity android:name=".NavDrawer"></activity>
-        <activity android:name=".auth" >
-
-        </activity>
-        <activity android:name=".registr" >
-
-        </activity>
+        <activity android:name=".NavDrawer" />
+        <activity android:name=".auth" />
+        <activity android:name=".registr" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -43,6 +43,7 @@ public class auth extends AppCompatActivity {
     DrawerLayout drawerLayout;
     public String sms = "cant";
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auth);
@@ -52,7 +53,7 @@ public class auth extends AppCompatActivity {
         password = findViewById(R.id.password_input_auth);
         showpwd = findViewById(R.id.show_pwd);
 
-        user_number = findViewById(R.id.user_number);
+        user_number = findViewById(R.id.user_login);
         user_number.setVisibility(View.INVISIBLE);
 
         main = findViewById(R.id.main_win);

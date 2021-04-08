@@ -10,14 +10,17 @@ public class Movie {
     private int time;
     private String year;
     private int age;
-    private String right_arrow;
+    private String description;
 
-    public Movie(String title, String genres, String image, int time, String year, int age) {
+
+
+    public Movie(String title, String genres, String image, int time, String year, int age, String description) {
         this.title = title;
         this.genres = genres;
         this.image = image;
         this.time = time;
         this.year = year;
+        this.description = description;
         this.age = age;
     }
 
@@ -45,6 +48,14 @@ public class Movie {
         return age;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public void setTitle(String title) {
         this.title = title;

@@ -125,7 +125,6 @@
                 android:layout_weight="1"
                 android:textSize="20sp"
                 android:drawablePadding="10dp"
-                android:textAlignment="textStart"
                 android:background="#00FFFFFF"
                 android:textColor="@color/white"
                 android:drawableStart="@drawable/bought"
@@ -157,11 +156,12 @@
     android:layout_height="wrap_content"
    android:layout_gravity="center_horizontal"
     android:layout_weight="1"
+android:layout_margin="20dp"
     android:orientation="horizontal">
     <Button
         android:id="@+id/num_tickets"
         android:layout_width="wrap_content"
-        android:text="билета"
+        android:text="билеты"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:fontFamily="@font/rubik_medium"

@@ -24,6 +24,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -35,10 +37,17 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CenterCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
+import com.bumptech.glide.request.target.CustomTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.example.yc.cinema.Movie;
 import com.example.yc.cinema.genres;
 import com.example.yc.cinema.getUser;
 import com.example.yc.cinema.movies;
+import com.squareup.picasso.Target;
 
 
 import java.io.PrintWriter;
@@ -51,6 +60,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -59,8 +69,9 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerViewAdapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
     public List<Movie> movieList;
+    public String name, last_name, user_login, birthday, phone, email, sms = "cant";
 
-
+    public movies movie;
 
     public String get_genres;
     public LinearLayout linearLayoutGenres;
@@ -81,9 +92,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
 
-        user_number = findViewById(R.id.user_number);
+        user_number = findViewById(R.id.user_login);
         user_number.setVisibility(View.INVISIBLE);
 
         main = findViewById(R.id.main_win);
@@ -104,27 +116,41 @@ public class MainActivity extends AppCompatActivity {
         login_lbl = findViewById(R.id.login_lbl);
 
 
-        //com.example.yc.cinema.getUser log_in = new getUser();
-        //boolean userlog_in=false;
-        //System.out.println(userlog_in);
-
-        Intent intent= getIntent();
-        Bundle extras = intent.getExtras();
-        if(extras!=null){
-
-            String name,last_name,user_login,birthday,phone,email,sms="cant";
-            last_name = intent.getStringExtra("last_name");
-            name = intent.getStringExtra("name");
-            user_login = intent.getStringExtra("login");
-            birthday =intent.getStringExtra("birthday");
-            phone =intent.getStringExtra("phone");
-            email =intent.getStringExtra("email");
-            sms=intent.getStringExtra("sms");
+        user_edit.setOnClickListener(v -> {
+            Intent intent = new Intent(this,UserProfile.class);
+            intent.putExtra("last_name",this.last_name);
+            intent.putExtra("name",this.name);
+            intent.putExtra("login",this.user_login);
+            intent.putExtra("birthday",this.birthday);
+            intent.putExtra("phone",this.phone);
+            intent.putExtra("email",this.email);
+            intent.putExtra("sms",this.sms);
+            startActivity(intent);
+        });
 
 
-            System.out.println(sms +" Чо тут у нас\n"+phone);
+        if (getIntent().hasExtra("last_name") &&
+                getIntent().hasExtra("name") &&
+                getIntent().hasExtra("login") &&
+                getIntent().hasExtra("birthday") &&
+                getIntent().hasExtra("phone") &&
+                getIntent().hasExtra("email") &&
+                getIntent().hasExtra("sms")
+        ) {
 
-            if(sms.equals("can")){
+
+            last_name =  getIntent().getStringExtra("last_name");
+            name =  getIntent().getStringExtra("name");
+            user_login =  getIntent().getStringExtra("login");
+            birthday =  getIntent().getStringExtra("birthday");
+            phone =  getIntent().getStringExtra("phone");
+            email =  getIntent().getStringExtra("email");
+            sms =  getIntent().getStringExtra("sms");
+
+
+            System.out.println(sms + " Чо тут у нас\n" + phone);
+
+            if (sms.equals("can")) {
                 user_number.setVisibility(View.VISIBLE);
                 user_number.setText(user_login.trim());
 
@@ -178,7 +204,7 @@ public class MainActivity extends AppCompatActivity {
 
         //количество
         int getsize = pics.size();
-        System.out.println("колво"+getsize);
+        System.out.println("колво" + getsize);
 
 
         //шрифт
@@ -219,13 +245,12 @@ public class MainActivity extends AppCompatActivity {
 
         }
         all_genre.setOnClickListener(v -> {
-            recyclerView.setAdapter(mAdapter);
-            mAdapter.notifyDataSetChanged();
+            getMoviesInfo();
         });
 
-        Map<Integer, String> PopularMovies;
-        movies movie = new movies();
-        PopularMovies = movie.getPopularMovies();
+
+        movie = new movies();
+
 
 
         Typeface movie_font = ResourcesCompat.getFont(this, R.font.rubik_regular);
@@ -236,84 +261,83 @@ public class MainActivity extends AppCompatActivity {
         params_pop_movies.setMargins(10, 0, 0, 0);
 
 
-        for (Map.Entry<Integer, String> entry : PopularMovies.entrySet()) {
-            Button movie_item = new Button(new ContextThemeWrapper(this, R.style.for_movies), null, R.style.for_movies);
+        ////////////////////////////
 
-            movie_item.setTypeface(movie_font);
-            movie_item.setId(entry.getKey());
-            movie_item.setWidth(197);
-            movie_item.setHeight(363);
-            System.out.println(entry.getKey() + "\n");
-            movie_item.setPadding(25, 20, 25, 35);
-            movie_item.setCompoundDrawablesRelativeWithIntrinsicBounds(0, R.drawable.soul, 0, 0);
-
-            movie_item.setText(entry.getValue().trim());
-
-            linearLayoutPopularMovies.addView(movie_item, params_pop_movies);
-        }
+        Statement st = null;
+        connection con = new connection();
+        Connection connect = connection.conn();
+        String sql = "select movies.id , movies.movie,movies.image_url from movies inner join shows on movies.id=shows.movie inner join tickets on shows.id=tickets.show " +
+                "group by movies.movie, movies.id,image_url having count(tickets.show)>5 ";
+        Map<Integer,String> movies = new TreeMap<Integer, String>();
 
 
-        Map<Integer, String> AllMovies;
-        AllMovies = movie.getMovies();
+        try {
+            if(connect!=null) {
+                Log.e("OK","Коннект");
+                st = connect.createStatement();
+                ResultSet rs = st.executeQuery(sql);
+                if(rs!=null){
+                    while(rs.next()){
 
-        com.example.yc.cinema.genres get_genre = new genres();
+                        Button movie_item = new Button(new ContextThemeWrapper(this, R.style.for_movies), null, R.style.for_movies);
 
-        LinearLayout.LayoutParams params_for_all_movies = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        params_for_all_movies.topMargin = 10;
-        params_for_all_movies.gravity = Gravity.CENTER;
+                        movie_item.setTypeface(movie_font);
+                        movie_item.setId(rs.getInt("id"));
+                        movie_item.setWidth(197);
+                        movie_item.setPadding(20, 20, 20, 0);
 
-        movieList = new ArrayList<>();
+                        RequestOptions requestOptions = new RequestOptions();
+                        requestOptions = requestOptions.transforms(new CenterCrop(), new RoundedCorners(21));
+                        Glide.with(MainActivity.this).load(rs.getString("image_url")).apply(requestOptions).into(new CustomTarget<Drawable>(179,269) {
+                            @Override
+                            public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
+                                movie_item.setCompoundDrawablesWithIntrinsicBounds(null, resource, null, null);
+                            }
 
-         for (Map.Entry<Integer, String> entry : AllMovies.entrySet()) {
-            get_genres = get_genre.getMovieGenre(entry.getKey());
-            get_genres = get_genres.replaceAll(",$", "");
-            get_genres = get_genres.replaceAll(",", ", ");
+                            @Override
+                            public void onLoadCleared(@Nullable Drawable placeholder) {
+                                movie_item.setCompoundDrawablesWithIntrinsicBounds(null, placeholder, null, null);
+                            }
+                        });
 
-             String query ="select running_time,age,year, image_url from movies where id="+entry.getKey();
-            Statement st = null;
-            connection con = new connection();
-            Connection connect = connection.conn();
 
-            try {
+                        movie_item.setText(rs.getString("movie").trim());
 
-                if(connect!=null){
-                    st = connect.createStatement();
-                    ResultSet rs = st.executeQuery(query);
-                    if(rs!=null){
-                        while(rs.next()){
-                            movieList.add(new Movie(entry.getValue(), get_genres,rs.getString("image_url"),rs.getInt("running_time") ,rs.getString("year"),rs.getInt("age")));
-                        }
+                        linearLayoutPopularMovies.addView(movie_item, params_pop_movies);
+
                     }
+
                 }
-                else Log.e("ERROR","Ошибочка");
+            }
+            else Log.e("ERROR","Ошибочка");
 
-            } catch (SQLException e) {
-                Log.e("ERROR","FAILED lol "+e.getMessage().toString());
+        } catch (SQLException e) {
+            Log.e("ERROR","FAILED lol "+e.getMessage().toString());
 
-            }finally {
-                if (connect != null) {
-                    System.out.println("Закрытие подключения");
+        }finally {
+            if (connect != null) {
+                System.out.println("Закрытие подключения");
 
-                    try {
-                        connect.close();
-                    } catch (SQLException e) {
-                        System.out.println(e.toString() + "check");
-                    }
+                try {
+                    connect.close();
+
+                } catch (SQLException e) {
+                    System.out.println(e.toString() + "check");
                 }
             }
         }
-        mAdapter = new RecyclerViewAdapter(movieList,MainActivity.this);
-        recyclerView.setAdapter(mAdapter);
 
-    }
+        ////////////////
+
+
+
+        getMoviesInfo();
+}
 
      View.OnClickListener handleOnClick( final Button genre_item) {
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                search_result(genre_item.getText().toString());
-                System.out.println(genre_item.getId());
-            }
+        return v -> {
+            search_result(genre_item.getText().toString());
+            System.out.println(genre_item.getId());
         };
     }
 
@@ -343,6 +367,10 @@ public class MainActivity extends AppCompatActivity {
 
     public static void openDrawer(DrawerLayout drawerLayout) {
         drawerLayout.openDrawer(GravityCompat.START);
+    }
+
+    public void ClickEdit(View view){
+        redirectActivity(this,UserProfile.class);
     }
 
     public void LogIn(View view){
@@ -376,17 +404,84 @@ public class MainActivity extends AppCompatActivity {
 
     public void logout(Activity activity) {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-        builder.setTitle("Logout");
-        builder.setMessage("Are you sure you want to log out?");
-        builder.setPositiveButton("YES", (dialog, which) -> {
-            activity.finishAffinity();
-            System.exit(0);
+        builder.setTitle("Уведомление");
+        builder.setMessage("Вы уверены, что хотите выйти?");
+        builder.setPositiveButton("Да", (dialog, which) -> {
+            //activity.finishAffinity();
+            //System.exit(0);
+            name="";
+            last_name="";
+            birthday="";
+            phone="";
+            user_login="";
+            email="";
+            user_number.setVisibility(View.INVISIBLE);
+            user_tickets.setVisibility(View.INVISIBLE);
+            user_bookings.setVisibility(View.INVISIBLE);
+            exit.setVisibility(View.INVISIBLE);
+            user_edit.setVisibility(View.INVISIBLE);
+            login_lbl.setVisibility(View.VISIBLE);
+
         });
-        builder.setNegativeButton("NO", (dialog, which) -> dialog.dismiss());
+        builder.setNegativeButton("Нет", (dialog, which) -> dialog.dismiss());
         builder.show();
     }
 
     public void toMain(View view){
        recreate();
+    }
+
+    private void getMoviesInfo(){
+
+        Map<Integer, String> AllMovies;
+        AllMovies = movie.getMovies();
+
+        com.example.yc.cinema.genres get_genre = new genres();
+
+
+
+        movieList = new ArrayList<>();
+
+        for (Map.Entry<Integer, String> entry : AllMovies.entrySet()) {
+            get_genres = get_genre.getMovieGenre(entry.getKey());
+            get_genres = get_genres.replaceAll(",$", "");
+            get_genres = get_genres.replaceAll(",", ", ");
+
+            String query ="select running_time,age,year, image_url, description from movies where id="+entry.getKey();
+            Statement st = null;
+            connection con = new connection();
+            Connection connect = connection.conn();
+
+            try {
+
+                if(connect!=null){
+                    st = connect.createStatement();
+                    ResultSet rs = st.executeQuery(query);
+                    if(rs!=null){
+                        while(rs.next()){
+                            movieList.add(new Movie(entry.getValue(), get_genres,rs.getString("image_url"),rs.getInt("running_time") ,rs.getString("year"),rs.getInt("age"),rs.getString("description")));
+                        }
+                    }
+                }
+                else Log.e("ERROR","Ошибочка");
+
+            } catch (SQLException e) {
+                Log.e("ERROR","FAILED lol "+e.getMessage().toString());
+
+            }finally {
+                if (connect != null) {
+                    System.out.println("Закрытие подключения");
+
+                    try {
+                        connect.close();
+                    } catch (SQLException e) {
+                        System.out.println(e.toString() + "check");
+                    }
+                }
+            }
+        }
+        mAdapter = new RecyclerViewAdapter(movieList,MainActivity.this);
+        recyclerView.setAdapter(mAdapter);
+
     }
 }
