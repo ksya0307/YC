@@ -22,6 +22,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,6 +37,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.yc.cinema.Movie;
 import com.example.yc.cinema.genres;
+import com.example.yc.cinema.getUser;
 import com.example.yc.cinema.movies;
 
 
@@ -59,10 +61,18 @@ public class MainActivity extends AppCompatActivity {
     public List<Movie> movieList;
 
 
+
     public String get_genres;
     public LinearLayout linearLayoutGenres;
     public LinearLayout linearLayoutPopularMovies;
     public LinearLayout linearLayoutAllMovies;
+
+    TextView user_number, login_lbl;
+    Button main;
+    Button user_tickets;
+    Button user_bookings;
+    Button user_edit;
+    Button exit;
 
     DrawerLayout drawerLayout;
 
@@ -72,6 +82,62 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        user_number = findViewById(R.id.user_number);
+        user_number.setVisibility(View.INVISIBLE);
+
+        main = findViewById(R.id.main_win);
+        //main.setVisibility(View.INVISIBLE);
+
+        user_tickets = findViewById(R.id.user_tickets);
+        user_tickets.setVisibility(View.INVISIBLE);
+
+        user_bookings = findViewById(R.id.user_bookings);
+        user_bookings.setVisibility(View.INVISIBLE);
+
+        user_edit = findViewById(R.id.user_edit);
+        user_edit.setVisibility(View.INVISIBLE);
+
+        exit = findViewById(R.id.user_logout);
+        exit.setVisibility(View.INVISIBLE);
+
+        login_lbl = findViewById(R.id.login_lbl);
+
+
+        //com.example.yc.cinema.getUser log_in = new getUser();
+        //boolean userlog_in=false;
+        //System.out.println(userlog_in);
+
+        Intent intent= getIntent();
+        Bundle extras = intent.getExtras();
+        if(extras!=null){
+
+            String name,last_name,user_login,birthday,phone,email,sms="cant";
+            last_name = intent.getStringExtra("last_name");
+            name = intent.getStringExtra("name");
+            user_login = intent.getStringExtra("login");
+            birthday =intent.getStringExtra("birthday");
+            phone =intent.getStringExtra("phone");
+            email =intent.getStringExtra("email");
+            sms=intent.getStringExtra("sms");
+
+
+            System.out.println(sms +" Чо тут у нас\n"+phone);
+
+            if(sms.equals("can")){
+                user_number.setVisibility(View.VISIBLE);
+                user_number.setText(user_login.trim());
+
+                main.setVisibility(View.VISIBLE);
+                user_tickets.setVisibility(View.VISIBLE);
+                user_bookings.setVisibility(View.VISIBLE);
+                user_edit.setVisibility(View.VISIBLE);
+                exit.setVisibility(View.VISIBLE);
+
+                login_lbl.setVisibility(View.INVISIBLE);
+            }
+        }
+
 
         drawerLayout = findViewById(R.id.drawer_layout);
 
@@ -271,8 +337,6 @@ public class MainActivity extends AppCompatActivity {
         mAdapter.choosedGenreList(choosedGenre);
     }
 
-
-
     public void ClickMenu(View view){
         openDrawer(drawerLayout);
     }
@@ -304,23 +368,21 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+    public void ClickLogOut(View view){
+        logout(this);
+    }
+
+
     public void logout(Activity activity) {
         AlertDialog.Builder builder = new AlertDialog.Builder(activity);
         builder.setTitle("Logout");
         builder.setMessage("Are you sure you want to log out?");
-        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                activity.finishAffinity();
-                System.exit(0);
-            }
+        builder.setPositiveButton("YES", (dialog, which) -> {
+            activity.finishAffinity();
+            System.exit(0);
         });
-        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
+        builder.setNegativeButton("NO", (dialog, which) -> dialog.dismiss());
         builder.show();
     }
 

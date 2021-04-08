@@ -15,6 +15,13 @@ import java.sql.Statement;
 public class getUser extends DialogFragment {
     public String login;
     public String password;
+    public int id=0;
+    public String name;
+    public String last_name;
+    public String phone;
+    public String birthday;
+    public String email;
+
     public Boolean getUser(String login) {
         Statement st = null;
         connection con = new connection();
@@ -64,7 +71,7 @@ public class getUser extends DialogFragment {
         Statement st = null;
         connection con = new connection();
         Connection connect = connection.conn();
-        String sql = "select id from users where login='" + login + "' and password='"+ sha253pwd.sha256(password)+"'";
+        String sql = "select id,last_name, name,login,email,phone, birthday from users where login='" + login + "' and password='"+ sha253pwd.sha256(password)+"'";
 
         Boolean existingUser =  false;
         try {
@@ -73,11 +80,17 @@ public class getUser extends DialogFragment {
                 st = connect.createStatement();
                 ResultSet rs = st.executeQuery(sql);
                 System.out.println(rs);
-                int id = 0;
+                //int id = 0;
+
                 if (rs != null) {
                     while(rs.next()){
-                        id = rs.getInt("id");
-                        System.out.println(id);
+                        this.id = rs.getInt("id");
+                        this.last_name = rs.getString("last_name");
+                        this.name = rs.getString("name");
+                        this.login = rs.getString("login");
+                        this.email = rs.getString("email");
+                        this.phone =rs.getString("phone");
+                        this.birthday = rs.getString("birthday");
                     }
                     if(id!=0){
                         existingUser = true;
