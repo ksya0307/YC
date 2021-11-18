@@ -1,2 +1,2 @@
 # YC
-тусовочка в канаде
+Mobile Application for a cinema theater
